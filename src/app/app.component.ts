@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes Tutorial';
   loader = true;
-
+  public jokes;
+  constructor(private heroService: HeroService ) {}
   ngOnInit() {
     this.delay();
+    this.getJokes();
   }
-  // setTimeout(function(){ alert("Hello"); }, 3000);
-  delay(){
-    setTimeout(() => { 
-      this.loader = false; 
-    }, 3000);
+  delay() {
+    setTimeout(() => {
+      this.loader = false;
+    }, 7000);
+  }
+
+  getJokes() {
+    this.heroService.getJokes()
+        .subscribe(
+          data => {this.jokes = data; },
+          err => console.error(err),
+          () => console.log('Done loading Jokes')
+        );
   }
 }

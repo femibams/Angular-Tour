@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
 // import { HEROES } from '../mock-heroes';
 import { HeroService } from '../hero.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-heroes',
@@ -13,11 +12,8 @@ import { Observable } from 'rxjs';
 export class HeroesComponent implements OnInit {
   hero: Hero = {
     id: 1,
-    name:'Windstorm'
+    name: 'Windstorm'
   };
-
-  public jokes;
-
   heroes: Hero[];
   selectedHero: Hero;
 
@@ -25,7 +21,6 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     // this.getHeroes();
-    this.getJokes();
   }
 
   onSelect(hero: Hero): void {
@@ -36,14 +31,5 @@ export class HeroesComponent implements OnInit {
   //   this.heroService.getHeroes()
   //       .subscribe(heroes => this.heroes = heroes);
   // }
-
-  getJokes() {
-    this.heroService.getJokes()
-        .subscribe(
-          data => {this.jokes = data},
-          err => console.error(err),
-          () => console.log('Done loading Jokes')
-        );
-  }
 
 }

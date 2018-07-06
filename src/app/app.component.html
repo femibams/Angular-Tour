@@ -1,6 +1,10 @@
-<div *ngIf="loader">
-  <p>Oshey Loader is here {{loader}}</p>
+<div class="loader"  *ngIf="loader">
+  <h1 class="setup">{{jokes.setup}}</h1>
+  <h3 class="punchline">
+    <i> ~ {{jokes.punchline}} </i>
+  </h3>
 </div>
 
-<h1 *ngIf="!loader">Welcome to {{ title }}!</h1>
-<app-heroes *ngIf="loader"></app-heroes>
+<div class="main" *ngIf="!loader">
+  <div class="main__text">MAIN PAGE</div>
+</div>
